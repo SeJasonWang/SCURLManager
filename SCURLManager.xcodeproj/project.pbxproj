@@ -13,6 +13,10 @@
 		253663211C5B54FC009B470F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2536631F1C5B54FC009B470F /* Main.storyboard */; };
 		253663231C5B54FC009B470F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 253663221C5B54FC009B470F /* Assets.xcassets */; };
 		253663261C5B54FC009B470F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 253663241C5B54FC009B470F /* LaunchScreen.storyboard */; };
+		253663301C5B5CD3009B470F /* SCURLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2536632F1C5B5CD3009B470F /* SCURLManager.m */; };
+		253663331C5B5D64009B470F /* SCURLHandlerBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 253663321C5B5D64009B470F /* SCURLHandlerBase.m */; };
+		253663361C5B5D73009B470F /* SCWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 253663351C5B5D73009B470F /* SCWebViewController.m */; };
+		25F094611C623DB900942728 /* SCURLOpenHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F094601C623DB900942728 /* SCURLOpenHandler.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,14 @@
 		253663221C5B54FC009B470F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		253663251C5B54FC009B470F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		253663271C5B54FC009B470F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2536632E1C5B5CD3009B470F /* SCURLManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCURLManager.h; sourceTree = "<group>"; };
+		2536632F1C5B5CD3009B470F /* SCURLManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCURLManager.m; sourceTree = "<group>"; };
+		253663311C5B5D64009B470F /* SCURLHandlerBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCURLHandlerBase.h; sourceTree = "<group>"; };
+		253663321C5B5D64009B470F /* SCURLHandlerBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCURLHandlerBase.m; sourceTree = "<group>"; };
+		253663341C5B5D73009B470F /* SCWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCWebViewController.h; sourceTree = "<group>"; };
+		253663351C5B5D73009B470F /* SCWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCWebViewController.m; sourceTree = "<group>"; };
+		25F0945F1C623DB900942728 /* SCURLOpenHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCURLOpenHandler.h; sourceTree = "<group>"; };
+		25F094601C623DB900942728 /* SCURLOpenHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCURLOpenHandler.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +70,7 @@
 		253663151C5B54FC009B470F /* SCURLManager */ = {
 			isa = PBXGroup;
 			children = (
+				2536632D1C5B5AFE009B470F /* SCURLManager */,
 				253663191C5B54FC009B470F /* AppDelegate.h */,
 				2536631A1C5B54FC009B470F /* AppDelegate.m */,
 				2536631C1C5B54FC009B470F /* ViewController.h */,
@@ -77,6 +90,21 @@
 				253663171C5B54FC009B470F /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2536632D1C5B5AFE009B470F /* SCURLManager */ = {
+			isa = PBXGroup;
+			children = (
+				2536632E1C5B5CD3009B470F /* SCURLManager.h */,
+				2536632F1C5B5CD3009B470F /* SCURLManager.m */,
+				253663311C5B5D64009B470F /* SCURLHandlerBase.h */,
+				253663321C5B5D64009B470F /* SCURLHandlerBase.m */,
+				253663341C5B5D73009B470F /* SCWebViewController.h */,
+				253663351C5B5D73009B470F /* SCWebViewController.m */,
+				25F0945F1C623DB900942728 /* SCURLOpenHandler.h */,
+				25F094601C623DB900942728 /* SCURLOpenHandler.m */,
+			);
+			path = SCURLManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,8 +178,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				2536631E1C5B54FC009B470F /* ViewController.m in Sources */,
+				253663301C5B5CD3009B470F /* SCURLManager.m in Sources */,
 				2536631B1C5B54FC009B470F /* AppDelegate.m in Sources */,
+				253663361C5B5D73009B470F /* SCWebViewController.m in Sources */,
+				253663331C5B5D64009B470F /* SCURLHandlerBase.m in Sources */,
 				253663181C5B54FC009B470F /* main.m in Sources */,
+				25F094611C623DB900942728 /* SCURLOpenHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,6 +332,7 @@
 				2536632C1C5B54FC009B470F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
