@@ -8,8 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString *const kYourCustomScheme;
+
 @interface SCURLManager : NSObject
 
 + (BOOL)openURL:(NSURL *)url;
++ (BOOL)openURL:(NSURL *)url options:(NSDictionary *)options;
 
 @end

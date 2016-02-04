@@ -7,35 +7,30 @@
 //
 
 #import "SCURLHandlerBase.h"
-#import "SCURLOpenHandler.h"
+#import "SCURLTestHandler.h"
 
 @implementation SCURLHandlerBase
 
-+ (instancetype)handleURL:(NSURL *)url {
++ (instancetype)openURL:(NSURL *)url {
+    return [self openURL:url options:nil];
+}
+
++ (instancetype)openURL:(NSURL *)url options:(NSDictionary *)options {
     NSDictionary *handlerMap = @{
-                                 @"open"  : [SCURLOpenHandler class]
+                                 @"test"  : [SCURLTestHandler class]
                                  };
-    NSString *type = url.host;
-    Class class = handlerMap[type];
+    Class class = handlerMap[url.host];
     if (class) {
-        return [[class alloc] initWithURL:url];
+        return [[class alloc] initWithURL:url options:options];
     } else {
         return nil;
     }
 }
 
-- (instancetype)initWithURL:(NSURL *)url {
+- (instancetype)initWithURL:(NSURL *)url options:(NSDictionary *)options {
     if (self = [super init]) {
-        NSString *jasonString = [[url.query stringByReplacingOccurrencesOfString:@"+" withString:@"%20"] stringByRemovingPercentEncoding];
-        if (jasonString) {
-            NSData *data = [jasonString dataUsingEncoding:NSUTF8StringEncoding];
-            if (data) {
-                id json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-                if ([json isKindOfClass:[NSDictionary class]]) {
-                    _params = json;
-                }
-            }
-        }
+        _params  = [self params:url.query];
+        _options = options;
     }
     return self;
 }
@@ -45,4 +40,19 @@
     return NO;
 }
 
+#pragma mark Private Method
+
+- (NSDictionary *)params:(NSString *)query {
+    NSString *jsonString = [[query stringByReplacingOccurrencesOfString:@"+" withString:@"%20"] stringByRemovingPercentEncoding];
+    if (jsonString) {
+        NSData *data = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+        if (data) {
+            id json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+            if ([json isKindOfClass:[NSDictionary class]]) {
+                return json;
+            }
+        }
+    }
+    return nil;
+}
 @end

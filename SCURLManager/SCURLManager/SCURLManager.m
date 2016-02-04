@@ -10,13 +10,18 @@
 #import "SCURLHandlerBase.h"
 #import "SCWebViewController.h"
 
-static NSString *const kScheme = @"xxxx";
+NSString *const kYourCustomScheme = @"xxxx";
 
 @implementation SCURLManager
 
 + (BOOL)openURL:(NSURL *)url {
-    if ([url.scheme isEqualToString:kScheme]) {
-        return [[SCURLHandlerBase handleURL:url] handle];
+    return [self openURL:url options:nil];
+}
+
++ (BOOL)openURL:(NSURL *)url options:(NSDictionary *)options {
+    if ([url.scheme isEqualToString:kYourCustomScheme]) {
+        SCURLHandlerBase *handler = [SCURLHandlerBase openURL:url options:options];
+        return [handler handle];
     } else if ([url.scheme isEqualToString:@"http"] || [url.scheme isEqualToString:@"https"]) {
         [SCWebViewController openURL:url animated:YES];
         return YES;

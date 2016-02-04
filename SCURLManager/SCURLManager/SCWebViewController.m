@@ -9,28 +9,17 @@
 #import "SCWebViewController.h"
 #import "SCURLManager.h"
 
-@interface NSString(Extension)
-
-- (BOOL)isEmptyString;
-
-@end
-
 @implementation NSString(Extension)
 
-- (BOOL)isEmptyString {
-    if (self == nil) {
+- (BOOL)isValidString {
+    if (self == nil ||
+        self == NULL ||
+        [self isKindOfClass:[NSNull class]] ||
+        [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0) {
+        return NO;
+    } else {
         return YES;
     }
-    if (self == NULL) {
-        return YES;
-    }
-    if ([self isKindOfClass:[NSNull class]]) {
-        return YES;
-    }
-    if ([[self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0) {
-        return YES;
-    }
-    return NO;
 }
 
 @end
@@ -45,39 +34,40 @@
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-        [self setUp];
+        [self createWebView];
     }
     return self;
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
-        [self setUp];
+        [self createWebView];
     }
     return self;
 }
 
 #pragma mark - Public Method
 
-+ (void)openURL:(NSURL *)url {
-    [self openURL:url animated:YES];
++ (void)openURL:(NSURL *)url animated:(BOOL)animated {
+    [self openURL:url animated:animated options:nil];
 }
 
-+ (void)openURL:(NSURL *)url animated:(BOOL)animated {
-    SCWebViewController *webVc = [[SCWebViewController alloc] init];    
-    [webVc.webView loadRequest:[NSURLRequest requestWithURL:url]];
-    UINavigationController *navC = [[UINavigationController alloc] initWithRootViewController:webVc];
++ (void)openURL:(NSURL *)url animated:(BOOL)animated options:(NSDictionary *)options {
+    SCWebViewController *webC = [[SCWebViewController alloc] init];
+    [webC.webView loadRequest:[NSURLRequest requestWithURL:url]];
+    UINavigationController *navC = [[UINavigationController alloc] initWithRootViewController:webC];
     [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:navC animated:YES completion:nil];
 }
 
 #pragma mark - Private Method
 
-- (void)setUp {
-    self.webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
-    self.webView.delegate = self;
-    self.webView.scrollView.directionalLockEnabled = YES;
-    self.webView.mediaPlaybackRequiresUserAction = NO;
-    [self.view addSubview:self.webView];
+- (void)createWebView {
+    UIWebView *webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
+    webView.delegate = self;
+    webView.scrollView.directionalLockEnabled = YES;
+    webView.mediaPlaybackRequiresUserAction = NO;
+    [self.view addSubview:webView];
+    _webView = webView;
 }
 
 #pragma mark - UIWebViewDelegate
@@ -88,7 +78,7 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     NSString *title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
-    if (!title.isEmptyString) {
+    if (title.isValidString) {
         self.title = title;
     }
 

@@ -16,7 +16,7 @@
 		253663301C5B5CD3009B470F /* SCURLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2536632F1C5B5CD3009B470F /* SCURLManager.m */; };
 		253663331C5B5D64009B470F /* SCURLHandlerBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 253663321C5B5D64009B470F /* SCURLHandlerBase.m */; };
 		253663361C5B5D73009B470F /* SCWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 253663351C5B5D73009B470F /* SCWebViewController.m */; };
-		25F094611C623DB900942728 /* SCURLOpenHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F094601C623DB900942728 /* SCURLOpenHandler.m */; };
+		25F094641C6330D700942728 /* SCURLTestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F094631C6330D700942728 /* SCURLTestHandler.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,8 +36,8 @@
 		253663321C5B5D64009B470F /* SCURLHandlerBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCURLHandlerBase.m; sourceTree = "<group>"; };
 		253663341C5B5D73009B470F /* SCWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCWebViewController.h; sourceTree = "<group>"; };
 		253663351C5B5D73009B470F /* SCWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCWebViewController.m; sourceTree = "<group>"; };
-		25F0945F1C623DB900942728 /* SCURLOpenHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCURLOpenHandler.h; sourceTree = "<group>"; };
-		25F094601C623DB900942728 /* SCURLOpenHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCURLOpenHandler.m; sourceTree = "<group>"; };
+		25F094621C6330D700942728 /* SCURLTestHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCURLTestHandler.h; sourceTree = "<group>"; };
+		25F094631C6330D700942728 /* SCURLTestHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCURLTestHandler.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,8 +101,8 @@
 				253663321C5B5D64009B470F /* SCURLHandlerBase.m */,
 				253663341C5B5D73009B470F /* SCWebViewController.h */,
 				253663351C5B5D73009B470F /* SCWebViewController.m */,
-				25F0945F1C623DB900942728 /* SCURLOpenHandler.h */,
-				25F094601C623DB900942728 /* SCURLOpenHandler.m */,
+				25F094621C6330D700942728 /* SCURLTestHandler.h */,
+				25F094631C6330D700942728 /* SCURLTestHandler.m */,
 			);
 			path = SCURLManager;
 			sourceTree = "<group>";
@@ -178,12 +178,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				2536631E1C5B54FC009B470F /* ViewController.m in Sources */,
+				25F094641C6330D700942728 /* SCURLTestHandler.m in Sources */,
 				253663301C5B5CD3009B470F /* SCURLManager.m in Sources */,
 				2536631B1C5B54FC009B470F /* AppDelegate.m in Sources */,
 				253663361C5B5D73009B470F /* SCWebViewController.m in Sources */,
 				253663331C5B5D64009B470F /* SCURLHandlerBase.m in Sources */,
 				253663181C5B54FC009B470F /* main.m in Sources */,
-				25F094611C623DB900942728 /* SCURLOpenHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

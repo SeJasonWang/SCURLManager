@@ -10,10 +10,10 @@
 
 @interface SCWebViewController : UIViewController
 
-@property (nonatomic, strong) UIWebView *webView;
+@property (nonatomic, weak) UIWebView *webView;
 @property (nonatomic, copy, readonly) NSURL *url;
 
-+ (void)openURL:(NSURL *)url;
 + (void)openURL:(NSURL *)url animated:(BOOL)animated;
++ (void)openURL:(NSURL *)url animated:(BOOL)animated options:(NSDictionary *)options;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "SCURLManager.h"
 
 @interface AppDelegate ()
 
@@ -40,6 +41,13 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(nonnull NSURL *)url options:(nonnull NSDictionary<NSString *,id> *)options {
+    if ([url.scheme isEqualToString:kYourCustomScheme]) {
+        return [SCURLManager openURL:url options:options];
+    }
+    return NO;
 }
 
 @end
