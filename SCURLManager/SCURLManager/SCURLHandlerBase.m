@@ -16,9 +16,12 @@
 }
 
 + (instancetype)openURL:(NSURL *)url options:(NSDictionary *)options {
-    NSDictionary *handlerMap = @{
-                                 @"test"  : [SCURLTestHandler class]
-                                 };
+    static NSDictionary *handlerMap = nil;
+    if (handlerMap == nil) {
+        handlerMap = @{
+                       @"test"  : [SCURLTestHandler class]
+                     };
+    }
     Class class = handlerMap[url.host];
     if (class) {
         return [[class alloc] initWithURL:url options:options];
@@ -31,6 +34,7 @@
     if (self = [super init]) {
         _params  = [self params:url.query];
         _options = options;
+        _url = url;
     }
     return self;
 }

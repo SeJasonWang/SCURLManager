@@ -7,16 +7,14 @@
 //
 
 #import "SCURLTestHandler.h"
+#import "UIViewController+Extension.h"
 
 @implementation SCURLTestHandler
 
 - (BOOL)handle {
-    NSLog(@"%@",self.params);
     
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(50, 150, 200, 50)];
-    label.backgroundColor = [UIColor orangeColor];
-    label.text = @"test scheme!";
-    [[UIApplication sharedApplication].keyWindow addSubview:label];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"test scheme" message:self.url.absoluteString preferredStyle:UIAlertControllerStyleAlert];
+    [alert.topViewController presentViewController:alert animated:YES completion:nil];
     
     return YES;
 }

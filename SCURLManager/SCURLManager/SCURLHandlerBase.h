@@ -14,10 +14,7 @@
  *  query解码后的字典
  */
 @property (nonatomic, copy, readonly) NSDictionary *params;
-
-/**
- *  可选的额外字典
- */
+@property (nonatomic, copy, readonly) NSURL *url;
 @property (nonatomic, copy, readonly) NSDictionary *options;
 
 + (instancetype)openURL:(NSURL *)url;

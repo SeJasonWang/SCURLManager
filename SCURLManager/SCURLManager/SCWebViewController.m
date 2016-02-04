@@ -8,6 +8,7 @@
 
 #import "SCWebViewController.h"
 #import "SCURLManager.h"
+#import "UIViewController+Extension.h"
 
 @implementation NSString(Extension)
 
@@ -56,7 +57,7 @@
     SCWebViewController *webC = [[SCWebViewController alloc] init];
     [webC.webView loadRequest:[NSURLRequest requestWithURL:url]];
     UINavigationController *navC = [[UINavigationController alloc] initWithRootViewController:webC];
-    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:navC animated:YES completion:nil];
+    [webC.topViewController presentViewController:navC animated:YES completion:nil];
 }
 
 #pragma mark - Private Method
