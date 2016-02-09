@@ -13,7 +13,11 @@
 [SCURLManager openURL:[NSURL URLWithString:@"<scheme>://<type>?<encode后的json>"]]
 ```
 demo内的scheme为@"xxxx"
+
 type为@"test"，对应操作为present一个AlertView
+
 如果带上encode后的json，最后可以解析出来赋值给params属性
+
+在webView内，也可以拦截scheme为@"xxxx"的url，实现前端与客户端的交互
 
 ![demo](https://img.alicdn.com/imgextra/i2/135480037/TB20oCUkXXXXXXmXXXXXXXXXXXX_!!135480037.gif)
